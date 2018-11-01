@@ -4,8 +4,11 @@
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="<?= base_url('assets/css/bootstrap.min.css')?>">
 	<script src="<?= base_url('assets/js/jquery-3.3.1.min.js')?>"></script>
+	<script src="<?= base_url('assets/js/popper.js')?>"></script>
 	<script src="<?= base_url('assets/js/bootstrap.min.js')?>"></script>
-	<title>Laporan Spam</title>
+	
+
+	<title>#</title>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light box-shadow">
@@ -18,14 +21,17 @@
 	  </button>
 	  <div class="collapse navbar-collapse" id="navbarText">
 	    <ul class="navbar-nav mr-auto">
-	      <li class="nav-item ">
+	      <li class="nav-item">
 	        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
 	      </li>
-	      <li class="nav-item active">
-	        <a class="nav-link" href="#">Spam</a>
+	      <li class="nav-item">
+	        <a class="nav-link" href="<?=base_url('admin/spam')?>">Spam</a>
 	      </li>
 	      <li class="nav-item">
-	        <a class="nav-link" href="#">Konfirmasi</a>
+	        <a class="nav-link" href="<?=base_url('admin/konfirmasi')?>">Konfirmasi</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="<?=base_url('admin/topik')?>">Topik</a>
 	      </li>
 	    </ul>
 	    <span class="navbar-text">
@@ -35,4 +41,4 @@
 	</div>
 </nav>
 	
-	<main role="main" class="container">
+<main role="main" class="container">
