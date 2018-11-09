@@ -72,8 +72,11 @@ class Admin extends CI_Controller {
 
 		$saldo = $saldo + $nominal;
 
-		$this->ModelTopup->update_topup($id, $status);
-		$this->ModelBisnis->update_saldo($id_member, $saldo);
+		$topup = $this->ModelTopup->update_topup($id, $status);
+
+		if ($status == 1) {
+			$this->ModelBisnis->update_saldo($id_member, $saldo);
+		}
 
 		redirect('admin/konfirmasi','refresh');
 	}

@@ -27,8 +27,8 @@
             <td><?=$key->email ?></td>
             <td><?=$key->tanggal ?></td>
             <td><?=$key->nama_bank ?></td>
-            <td><?=$key->nominal ?></td>
             <td><img src="<?=base_url('assets/images/'.$key->bukti)?>" width="150px"></td>
+            <td><?=$key->nominal ?></td>
             <td>
               <?php if ($key->status == '0'): ?>
                 <span class="badge badge-danger">Batal</span>
