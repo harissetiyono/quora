@@ -9,6 +9,7 @@ class ModelTopik extends CI_Model {
 	}
 
 	public function get_topik(){
+		$this->db->order_by("nama_topik", "asc");
 		return $this->db->get('topik');
 	}
 
@@ -19,6 +20,7 @@ class ModelTopik extends CI_Model {
 
 	public function insert_topik($data){
 		$this->db->insert('topik', $data);
+		return true;
 	}
 
 	public function delete_topik($id){
@@ -29,6 +31,8 @@ class ModelTopik extends CI_Model {
 	public function update_topik($id,$data){
 		$this->db->where('id_topik', $id);
 		$this->db->update('topik', $data);
+
+		return true;
 	}
 }
 

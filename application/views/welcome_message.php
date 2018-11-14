@@ -68,8 +68,27 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body>
 
 <div id="container">
-	<h1>Welcome to CodeIgniter!</h1>
+	<?php foreach ($adset as $key): ?>
+		<div class="form-group row">
+	    <div class="col-sm-6">
+	      <div class="card w-125">
+	        <div class="card-body">
+	          <small id="nama_bisnis_preview">Sponsored by <?php echo $key['nama_bisnis']; ?></small>
+	          <h5 class="card-title" id="headline_preview"><?php echo $key['judul']; ?></h5>
+	          <p class="card-text" id="description_preview"><?php echo $key['deskripsi'] ?></p>
+	          <form action="<?php echo site_url('welcome/action_click') ?>" method="POST">
+	          	<input type="text" name="id_adset" value="<?php echo  $key['id_adset']?>" hidden>
+	          	<input type="text" name="url" value="<?php echo  $key['url']?>" hidden>
+	          	<input type="submit" class="btn" value="visit at"><i class="fa fa-external-link" aria-hidden="true"></i><strong id="url_preview"><?php echo $key['url'] ?></strong></input>
+	          </form>
+	          
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+	<?php endforeach ?>
 
+	<h1>Welcome to <?php echo $this->session->userdata('name') ?>!</h1>
 	<div id="body">
 		<p>The page you are looking at is being generated dynamically by CodeIgniter.</p>
 

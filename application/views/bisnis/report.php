@@ -41,48 +41,55 @@
         </button>
       </div>
       <div class="modal-body">
-        <div class="form-group row">
-        <label class="col-sm-2 col-form-label col-form-label-sm text-right">Report Name<NOFRAMES></NOFRAMES></label>
-          <div class="col-sm-6">
-            <input type="text" class="form-control">
-          </div>
-        </div>
-        <div class="form-group row">
-        <label class="col-sm-2 col-form-label col-form-label-sm text-right">Level<NOFRAMES></NOFRAMES></label>
-          <div class="col-sm-6">
-            <p>Owner</p>
-          </div>
-        </div>
-        <div class="form-group row">
-        <label class="col-sm-2 col-form-label col-form-label-sm text-right">Account Name<NOFRAMES></NOFRAMES></label>
-          <div class="col-sm-6">
-            <p><?php echo $this->session->userdata('nama') ?></p>
-          </div>
-        </div>
-      </div>
-      <div class="form-group row">
-        <label class="col-sm-2 col-form-label col-form-label-sm text-right">Schedule<NOFRAMES></NOFRAMES></label>
-          <div class="col-sm-6">
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-              <label class="form-check-label" for="inlineRadio1">One Time</label>
+          <div class="form-group row">
+          <label class="col-sm-2 col-form-label col-form-label-sm text-right">Report Name<NOFRAMES></NOFRAMES></label>
+            <div class="col-sm-6">
+              <input type="text" class="form-control">
             </div>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-              <label class="form-check-label" for="inlineRadio2">Recurring</label>
+          </div>
+          <div class="form-group row">
+          <label class="col-sm-2 col-form-label col-form-label-sm text-right">Level<NOFRAMES></NOFRAMES></label>
+            <div class="col-sm-6">
+              <p>Owner</p>
+            </div>
+          </div>
+          <div class="form-group row">
+          <label class="col-sm-2 col-form-label col-form-label-sm text-right">Account Name<NOFRAMES></NOFRAMES></label>
+            <div class="col-sm-6">
+              <p><?php echo $this->session->userdata('nama') ?></p>
             </div>
           </div>
         </div>
-      <div class="form-group row">
-        <label class="col-sm-2 col-form-label col-form-label-sm text-right">Date Range<NOFRAMES></NOFRAMES></label>
-          <div class="col-sm-6">
-            <select class="form-control btn btn-sm" >
-              <option>7 Days</option>
-              <option>30 Days</option>
-            </select>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label col-form-label-sm text-right">Schedule<NOFRAMES></NOFRAMES></label>
+            <div class="col-sm-6">
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                <label class="form-check-label" for="inlineRadio1">One Time</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                <label class="form-check-label" for="inlineRadio2">Recurring</label>
+              </div>
+            </div>
+          </div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label col-form-label-sm text-right">Date Range<NOFRAMES></NOFRAMES></label>
+            <div class="col-sm-6">
+              <select class="form-control btn btn-sm" >
+                <option>7 Days</option>
+                <option>30 Days</option>
+              </select>
+            </div>
           </div>
         </div>
-      </div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label col-form-label-sm text-right">Recipients<NOFRAMES></NOFRAMES></label>
+            <div class="col-sm-6">
+              
+            </div>
+          </div>
+        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

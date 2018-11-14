@@ -13,6 +13,8 @@
 
 <hr><br>
 
+<?php echo $this->session->userdata('messages') ?>
+
 <div class="row">
   <div class="col-2">
     <small class="text-muted">Performance for All Campaigns<br></small> 
@@ -50,23 +52,21 @@
       <th>Impression</th>
       <th>Click</th>
       <th>CTR</th>
-      <th>CPC</th>
-      <th>Spend</th>
       <th>Remaining Budget</th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>active</td>
-      <td>Private Course</td>
-      <td>$30</td>
-      <td>1000</td>
-      <td>150</td>
-      <td>15%</td>
-      <td>$0.2</td>
-      <td>$100</td>
-      <td>$70</td>
+    <?php foreach ($kampanye as $key): ?>
+      <tr>
+      <td><?php echo $key['status']; ?></td>
+      <td><a href="<?php echo site_url('bisnis/manage_adset/'.$key['id_kampanye']) ?>"><?php echo $key['nama_kampanye']; ?></td>
+      <td><?php echo $key['click'] * 500; ?></td>
+      <td><?php echo $key['impression']; ?></td>
+      <td><?php echo $key['click']; ?></td>
+      <td><?php echo @($key['click']/$key['impression']*100); ?>%</td>
+      <td><?php echo 'Rp '.number_format(round($member_bisnis[0]['saldo'])); ?></td>
     </tr>
+    <?php endforeach ?>
   </tbody>
 </table>
 

@@ -1,11 +1,14 @@
+<?php if (!empty($this->session->userdata('message'))) {
+  echo $this->session->userdata('message');
+} ?>
 <br>
 <div class="card card-body">
   <label>Tambah Data</label>
-  <form action="store_topik" method="POST">
+  <form action="<?php echo site_url('admin/store_topik') ?>" method="POST">
     <div class="row">
       <div class="col">
-        <input type="text" class="form-control" id="id_topik" name="id_topik" hidden="hidden">
-        <input type="text" class="form-control" id="topik" name="topik" autocomplete="false" placeholder="Topik">
+        <input type="text" class="form-control" id="id_topik" name="id_topik" hidden>
+        <input type="text" class="form-control" id="topik" name="topik" autocomplete="off" placeholder="Topik" required>
       </div>
       <div class="col">
         <select class="form-control" name="status" id="status">

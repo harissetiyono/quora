@@ -111,13 +111,19 @@ class Admin extends CI_Controller {
 			'status' => $status, 
 		);
 
-		if (isset($id)) {
-			$this->ModelTopik->update_topik($id, $data);
+		if (!empty($id)) {
+			$action = $this->ModelTopik->update_topik($id, $data);
 		}else{
-			$this->ModelTopik->insert_topik($data);
+			$action = $this->ModelTopik->insert_topik($data);
 		}
 
-		redirect('admin/topik','refresh');
+		if ($action) {
+			$message = $this->session->set_flashdata('message', 'berhasil');
+		}else{
+			$message = $this->session->set_flashdata('message', 'gagal');
+		}
+
+		redirect('admin/topik',$message);
 	}
 
 	public function delete_topik(){

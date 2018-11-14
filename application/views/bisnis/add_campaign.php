@@ -10,11 +10,11 @@
 <small class="text-muted">Name Your Campaign & Choose an Objective</small>
 <hr><br>
 
-<form>
+<form action="<?php echo site_url('bisnis/store_campaign') ?>" method="POST">
   <div class="form-group row">
     <label class="col-sm-2 col-form-label col-form-label-sm text-right">Campaign <NOFRAMES></NOFRAMES></label>
     <div class="col-sm-4">
-      <input type="text" class="form-control form-control-sm" placeholder="Untitled Campaign">
+      <input type="text" name="nama_kampanye" class="form-control form-control-sm" placeholder="Untitled Campaign">
     </div>
   </div>
   <div class="form-group row">
@@ -46,7 +46,7 @@
 		  <div class="form-group row">
 			  <label class="col-sm-2 col-form-label col-form-label-sm text-right">Conversion Type<NOFRAMES></NOFRAMES></label>
 			    <div class="col-sm-4">
-			    	<select class="form-control btn btn-sm">
+			    	<select name="tipe" class="form-control btn btn-sm">
 			    		<option value="1" selected="selected">Generic</option>
 			    		<option value="4">Purchase</option>
 			    		<option value="5">Generate Lead</option>
@@ -68,26 +68,38 @@
 			<div class="form-group row">
 			 	<label class="col-sm-2 col-form-label col-form-label-sm text-right">Daily Maximum Budget<NOFRAMES></NOFRAMES></label>
 			    <div class="col-sm-4">
-			      <input type="text" class="form-control" placeholder="100000">
+			      <input type="text" name="anggaran_perhari" class="form-control" placeholder="100000">
 			    </div>
 			</div>
 			<div class="form-group row">
 			 	<label class="col-sm-2 col-form-label col-form-label-sm text-right">Lifetime Budget<NOFRAMES></NOFRAMES></label>
 			    <div class="col-sm-4">
-			      <input type="text" class="form-control" placeholder="100000"> (Optional)
+			      <input type="text" name="anggaran_selamanya" class="form-control" placeholder="100000"> (Optional)
 			    </div>
 			</div>
 			<div class="form-group row">
 			 	<label class="col-sm-2 col-form-label col-form-label-sm text-right">Schedule<NOFRAMES></NOFRAMES></label>
 			    <div class="col-sm-10">
 			      <div class="form-check form-check-inline">
-						  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+						  <input class="form-check-input" type="radio" name="tipe_jadwal" id="RadioConv1" value="selamanya" checked>
 						  <label class="form-check-label" for="inlineRadio1">Begin advertising immediately</label>
 						</div>
 						<div class="form-check form-check-inline">
-						  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+						  <input class="form-check-input" type="radio" name="tipe_jadwal" id="RadioConv2" value="rentang">
 						  <label class="form-check-label" for="inlineRadio2">Set a start and (optional) end date</label>
 						</div>
+			    </div>
+			</div>
+			<div class="form-group row">
+			 	<label class="col-sm-2 col-form-label col-form-label-sm text-right"><NOFRAMES></NOFRAMES></label>
+			    <div class="col-sm-4">
+			      <div class="Box" style="display: none">
+					  	<div class="input-group input-daterange">
+						    <input type="date" name="tanggal_mulai" class="form-control">
+						    <div class="input-group-addon">to</div>
+						    <input type="date" name="tanggal_selesai"  class="form-control">
+							</div>
+					  </div>
 			    </div>
 			</div>
 			<hr><br>
@@ -111,26 +123,38 @@
 			<div class="form-group row">
 			 	<label class="col-sm-2 col-form-label col-form-label-sm text-right">Daily Maximum Budget<NOFRAMES></NOFRAMES></label>
 			    <div class="col-sm-4">
-			      <input type="text" class="form-control" placeholder="100000">
+			      <input type="text" name="anggaran_perhari" class="form-control"  placeholder="100000">
 			    </div>
 			</div>
 			<div class="form-group row">
 			 	<label class="col-sm-2 col-form-label col-form-label-sm text-right">Lifetime Budget<NOFRAMES></NOFRAMES></label>
 			    <div class="col-sm-4">
-			      <input type="text" class="form-control" placeholder="100000"> (Optional)
+			      <input type="text" name="anggaran_selamanya" class="form-control" placeholder="100000"> (Optional)
 			    </div>
 			</div>
 			<div class="form-group row">
 			 	<label class="col-sm-2 col-form-label col-form-label-sm text-right">Schedule<NOFRAMES></NOFRAMES></label>
 			    <div class="col-sm-10">
 			      <div class="form-check form-check-inline">
-						  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+						  <input class="form-check-input" type="radio" name="tipe_jadwal" id="RadioApp1" value="selamanya" checked>
 						  <label class="form-check-label" for="inlineRadio1">Begin advertising immediately</label>
 						</div>
 						<div class="form-check form-check-inline">
-						  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+						  <input class="form-check-input" type="radio" name="tipe_jadwal" id="RadioApp2" value="rentang">
 						  <label class="form-check-label" for="inlineRadio2">Set a start and (optional) end date</label>
 						</div>
+			    </div>
+			</div>
+			<div class="form-group row">
+			 	<label class="col-sm-2 col-form-label col-form-label-sm text-right"><NOFRAMES></NOFRAMES></label>
+			    <div class="col-sm-4">
+			      <div class="Box" style="display: none">
+					  	<div class="input-group input-daterange">
+						    <input type="date" name="tanggal_mulai" class="form-control">
+						    <div class="input-group-addon">to</div>
+						    <input type="date" name="tanggal_selesai" class="form-control">
+							</div>
+					  </div>
 			    </div>
 			</div>
 			<hr><br>
@@ -140,38 +164,74 @@
 			<div class="form-group row">
 			 	<label class="col-sm-2 col-form-label col-form-label-sm text-right">Daily Maximum Budget<NOFRAMES></NOFRAMES></label>
 			    <div class="col-sm-4">
-			      <input type="text" class="form-control" placeholder="100000">
+			      <input type="text" class="form-control" name="anggaran_perhari" placeholder="100000">
 			    </div>
 			</div>
 			<div class="form-group row">
 			 	<label class="col-sm-2 col-form-label col-form-label-sm text-right">Lifetime Budget<NOFRAMES></NOFRAMES></label>
 			    <div class="col-sm-4">
-			      <input type="text" class="form-control" placeholder="100000"> (Optional)
+			      <input type="text" class="form-control" name="anggaran_selamanya" placeholder="100000"> (Optional)
 			    </div>
 			</div>
 			<div class="form-group row">
 			 	<label class="col-sm-2 col-form-label col-form-label-sm text-right">Schedule<NOFRAMES></NOFRAMES></label>
 			    <div class="col-sm-10">
 			      <div class="form-check form-check-inline">
-						  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-						  <label class="form-check-label" for="inlineRadio1">Begin advertising immediately</label>
-						</div>
-						<div class="form-check form-check-inline">
-						  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-						  <label class="form-check-label" for="inlineRadio2">Set a start and (optional) end date</label>
-						</div>
+					  <input class="form-check-input" type="radio" name="tipe_jadwal" id="RadioTra1" value="selamanya">
+					  <label class="form-check-label" for="inlineRadio1">Begin advertising immediately</label>
+					</div>
+					<div class="form-check form-check-inline">
+					  <input class="form-check-input" type="radio" name="tipe_jadwal" id="RadioTra2" value="rentang">
+					  <label class="form-check-label" for="inlineRadio2">Set a start and (optional) end date</label>
+					</div>
+			    </div>
+			</div>
+			<div class="form-group row">
+			 	<label class="col-sm-2 col-form-label col-form-label-sm text-right"><NOFRAMES></NOFRAMES></label>
+			    <div class="col-sm-4">
+			      <div class="Box" style="display: none">
+					  	<div class="input-group input-daterange">
+						    <input type="date" name="tanggal_mulai" class="form-control">
+						    <div class="input-group-addon"><pre> to </pre></div>
+						    <input type="date" name="tanggal_selesai" class="form-control">
+							</div>
+					  </div>
 			    </div>
 			</div>
 			<hr><br>
 	  </div>
-
 	  <div class="form-group row">
 		 	<label class="col-sm-2 col-form-label col-form-label-sm text-right"><NOFRAMES></NOFRAMES></label>
 		    <div class="col-sm-4">
-		      <button type="button" class="btn btn-primary">Continue</button>
+		      <input type="submit" class="btn btn-primary" value="Continue"></input>
 		      <button type="button" class="btn btn-secondary">Cancel</button>
 		    </div>
 		</div>
-
 	</div>
 </form>
+
+<script type="text/javascript">
+	
+$(document).ready(function(){
+
+	$("#RadioConv1").prop('checked', true);
+
+	if($('#RadioConv1').attr("value")=="selamanya"){
+	  $(".Box").hide('slow');
+	}
+	if($('#RadioConv1').attr("value")=="rentang"){
+	  $(".Box").show('slow');
+	}
+
+	$('input[type="radio"]').click(function(){
+	    if($(this).attr("value")=="selamanya"){
+	        $(".Box").hide('slow');
+	    }
+	    if($(this).attr("value")=="rentang"){
+	        $(".Box").show('slow');
+
+	    }        
+	});
+});
+
+</script>

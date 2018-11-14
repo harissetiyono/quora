@@ -27,13 +27,13 @@
             <td><?=$key->email ?></td>
             <td><?=$key->tanggal ?></td>
             <td><?=$key->nama_bank ?></td>
-            <td><img src="<?=base_url('assets/images/'.$key->bukti)?>" width="150px"></td>
+            <td><img src="<?=base_url('assets/bukti/'.$key->bukti)?>" width="150px"></td>
             <td><?=$key->nominal ?></td>
             <td>
               <?php if ($key->status == '0'): ?>
-                <span class="badge badge-danger">Batal</span>
+                <span class="badge badge-danger">Belum diproses</span>
               <?php elseif ($key->status == null): ?>
-                <span class="badge badge-info">Belum diproses</span>
+                <span class="badge badge-info">Belum dibayar</span>
               <?php else: ?>
                 <span class="badge badge-success">Sukses</span>
               <?php endif ?>
