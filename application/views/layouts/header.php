@@ -34,9 +34,9 @@
 	        <a class="nav-link" href="<?=base_url('admin/topik')?>">Topik</a>
 	      </li>
 	    </ul>
-	    <span class="navbar-text">
+	    <<!-- span class="navbar-text">
 	      Login
-	    </span>
+	    </span> -->
 	  </div>
 	</div>
 </nav>

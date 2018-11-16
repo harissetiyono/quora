@@ -66,7 +66,7 @@
       <td><?php echo $key['nama_adset']; ?></td>
       <td><?php echo $key['impressions']; ?></td>
       <td><?php echo $key['click']; ?></td>
-      <td><?php echo @($key['click']/$key['impressions'])*100; ?>%</td>
+      <td><?php echo @(round(($key['click']/$key['impressions'])*100,2)); ?>%</td>
       <td>Rp. <?php echo $key['cpc']; ?></td>
       <td>Rp. <?php echo $key['click']*$key['cpc']; ?></td>
       <td>

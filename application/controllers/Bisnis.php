@@ -493,6 +493,12 @@ class Bisnis extends CI_Controller {
     }
 	}
 
+	public function logout()
+	{
+		$this->session->sess_destroy();
+		redirect('bisnis/login','refresh');
+	}
+
 }
 
 /* End of file Member_bisnis.php */

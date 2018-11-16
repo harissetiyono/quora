@@ -48,7 +48,7 @@
 
 	  <ul class="navbar-nav">
 	  	<li class="nav-item">
-        <a class="nav-link" href="{{ url('/login') }}" style="color: white;">
+        <a class="nav-link" href="#" style="color: white;">
         	<i class="fa fa-bell"></i> Notifications
         </a>
       </li>
@@ -60,6 +60,11 @@
             <a class="dropdown-item" href="<?php echo site_url('bisnis/account_setting/'.$this->session->userdata('id')) ?>" style="color:#4169E1">Account Setting</a>
             <a class="dropdown-item" href="<?php echo site_url('bisnis/billing/')?>" style="color:#4169E1">Billing & Payment</a>
         </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="<?php echo site_url('bisnis/logout') ?>" style="color: white;">
+          Logout
+        </a>
       </li>
     </ul>
 	<!-- </div> -->

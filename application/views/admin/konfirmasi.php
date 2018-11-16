@@ -34,6 +34,8 @@
                 <span class="badge badge-danger">Belum diproses</span>
               <?php elseif ($key->status == null): ?>
                 <span class="badge badge-info">Belum dibayar</span>
+                 <?php elseif ($key->status == '2'): ?>
+                <span class="badge badge-info">Ditolak</span>
               <?php else: ?>
                 <span class="badge badge-success">Sukses</span>
               <?php endif ?>
@@ -50,7 +52,7 @@
                   echo '<input type="submit" name="submit" class="btn btn-sm btn-primary" value="konfirmasi"></input>';
                 } ?>
                 
-                <input type="submit" name="submit" class="btn btn-sm btn-danger" value="batal"></input>
+                <input type="submit" name="submit" class="btn btn-sm btn-danger" value="Tolak"></input>
               </form>
             </td>
           </tr>

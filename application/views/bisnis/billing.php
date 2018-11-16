@@ -80,6 +80,8 @@
       <td>
         <?php if ($key['status'] == "1"): ?>
           <?php echo "Terbayar" ?>
+        <?php elseif($key['status'] == "2"): ?>
+          <?php echo "transaksi ditolak" ?>
         <?php elseif($key['status'] == "0"): ?>
           <?php echo "Sedang diproses" ?>
         <?php else: ?>

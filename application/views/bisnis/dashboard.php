@@ -48,7 +48,7 @@
     <tr>
       <th>Status</th>
       <th>Campaign Name</th>
-      <th>Delivery</th>
+      <!-- <th>Delivery</th> -->
       <th>Impression</th>
       <th>Click</th>
       <th>CTR</th>
@@ -60,10 +60,10 @@
       <tr>
       <td><?php echo $key['status']; ?></td>
       <td><a href="<?php echo site_url('bisnis/manage_adset/'.$key['id_kampanye']) ?>"><?php echo $key['nama_kampanye']; ?></td>
-      <td><?php echo $key['click'] * 500; ?></td>
+      <!-- <td><?php echo $key['click'] * 500; ?></td> -->
       <td><?php echo $key['impression']; ?></td>
       <td><?php echo $key['click']; ?></td>
-      <td><?php echo @($key['click']/$key['impression']*100); ?>%</td>
+      <td><?php echo @(round(($key['click']/$key['impression']*100),2)); ?>%</td>
       <td><?php echo 'Rp '.number_format(round($member_bisnis[0]['saldo'])); ?></td>
     </tr>
     <?php endforeach ?>

@@ -3,10 +3,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class ModelAds extends CI_Model {
 
+	public function get_ads_by()
+	{
+		$this->db->limit(3);
+		$this->db->order_by('cpc', 'desc');
+		return $this->db->get('mb_ad_set')->result_array();
+	}
+
 	public function get_ads_by_topik($id_topik)
 	{
 		$this->db->where('topik', $id_topik);
-		$this->db->limit(1);
+		$this->db->limit(2);
 		$this->db->order_by('cpc', 'desc');
 		return $this->db->get('mb_ad_set')->result_array();
 	}

@@ -68,12 +68,12 @@
 				      <input name="cp_bisnis" type="text" class="form-control" placeholder="contoh: 083323971283">
 				    </div>
 				  </div>
-				  <div class="form-group row">
+				  <!-- <div class="form-group row">
 				    <label class="col-sm-2 col-form-label">Logo Bisnis</label>
 				    <div class="col-sm-10">
 					    <input type="file" name="logo" class="form-control-file">
 					  </div>
-				  </div>
+				  </div> -->
 				  <div class="text-center">
 				  	<input type="submit" class="btn btn-primary btn-md btn-block" value="simpan"></input>
 				  </div><br>

@@ -10,12 +10,13 @@ class Admin extends CI_Controller {
 		$this->load->model('ModelSpam');
 		$this->load->model('ModelTopup');
 		$this->load->model('ModelBisnis');
+		$this->load->model('ModelPertanyaan');
+		$this->load->model('ModelJawaban');
 	}
 
 	public function index()
 	{
-		$this->load->view('layouts/header');
-		$this->load->view('layouts/footer');
+		redirect('admin/konfirmasi','refresh');
 	}
 
 	public function spam()
@@ -28,23 +29,36 @@ class Admin extends CI_Controller {
 		$this->load->view('layouts/footer');
 	}
 
-	public function spam_pertanyaan_update($id){
-		$id = $this->uri->segment(3);
-		$status = $this->input->post('status');
+	public function spam_pertanyaan_update($id,$status){
 		$data = array(
 			'status' => $status, 
 		);
 
-		$data = $this->ModelSpam->update_spam_pertanyaan($id, $data);
+		$data2 = array(
+			's_status' => $status, 
+		);
+
+		$this->ModelPertanyaan->update_pertanyaan($id, $data);
+		$this->ModelSpam->update_spam_pertanyaan($id, $data2);
+
+		redirect('admin/spam','refresh');
 	}
 
-	public function spam_jawaban_update($id){
+	public function spam_jawaban_update($id, $status){
 		$id = $this->uri->segment(3);
+
 		$data = array(
 			'status' => $status, 
 		);
 
-		$data = $this->ModelSpam->update_spam_jawaban($id, $data);
+		$data2 = array(
+			's_status' => $status, 
+		);
+
+		$update = $this->ModelJawaban->update_jawaban($id, $data);
+		$update = $this->ModelSpam->update_spam_jawaban($id, $data2);
+
+		redirect('admin/spam','refresh');
 	}
 
 	public function konfirmasi()
@@ -67,7 +81,7 @@ class Admin extends CI_Controller {
 		if ($status == 'konfirmasi') {
 			$status = '1';
 		}else{
-			$status = '0';
+			$status = '2';
 		}
 
 		$saldo = $saldo + $nominal;
