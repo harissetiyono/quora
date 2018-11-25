@@ -22,17 +22,17 @@
 		  </div>
 		</div>
 		<?php $i = 1; ?>
-		<?php foreach ($pertanyaan as $key): ?>
+		<?php foreach ($pertanyaan as $key_pertanyaan): ?>
 			<br>
 			<div class="card">
 			  <div class="card-body">
-			    <small>pertanyaan - <?php echo $key['nama_topik']; ?></small>
-			    <a href="<?php echo site_url('pertanyaan/id/'.$key['id_pertanyaan']) ?>" style="color: black">
-			    	<p class="h5"> <?php echo $key['pertanyaan']; ?></p>
+			    <small>pertanyaan - <?php echo $key_pertanyaan['nama_topik']; ?></small>
+			    <a href="<?php echo site_url('pertanyaan/id/'.$key_pertanyaan['id_pertanyaan']) ?>" style="color: black">
+			    	<p class="h5"> <?php echo $key_pertanyaan['pertanyaan']; ?></p>
 			    </a>
-			    	<button type="button" class="jawaban btn btn-link" id="<?php echo $key['id_pertanyaan'] ?>" data-id="<?php echo $key['id_pertanyaan'] ?>" data-toggle="modal"><i class="fa fa-pencil"></i> Jawab</button>
-			    <a href="<?php echo site_url('pertanyaan/ikuti_pertanyaan/'.$key['id_pertanyaan']) ?>" class="btn"><i class="fa fa-rss"></i> Ikuti</a>
-			    <a href="<?php echo site_url('pertanyaan/laporkan_pertanyaan/'.$key['id_pertanyaan']) ?>" class="btn"><i class="fa fa-flag"></i> Laporakan Spam</a>
+			    	<button type="button" class="jawaban btn btn-link" id="<?php echo $key_pertanyaan['id_pertanyaan'] ?>" data-id="<?php echo $key_pertanyaan['id_pertanyaan'] ?>" data-toggle="modal"><i class="fa fa-pencil"></i> Jawab</button>
+			    <a href="<?php echo site_url('pertanyaan/ikuti_pertanyaan/'.$key_pertanyaan['id_pertanyaan']) ?>" class="btn"><i class="fa fa-rss"></i> Ikuti</a>
+			    <a href="<?php echo site_url('pertanyaan/laporkan_pertanyaan/'.$key_pertanyaan['id_pertanyaan']) ?>" class="btn"><i class="fa fa-flag"></i> Laporakan Spam</a>
 			  </div>
 			</div>
 

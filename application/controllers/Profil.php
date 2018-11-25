@@ -57,6 +57,18 @@ class Profil extends CI_Controller {
 		$this->load->view('footer');
 	}
 
+	public function pengikut()
+	{
+
+		$id_member = $this->session->userdata('id_member');
+		$datas['profil'] = $this->ModelProfil->profil($id_member);
+		$datas['pengikut'] = $this->ModelProfil->pengikut($id_member);
+
+		$this->load->view('header');
+		$this->load->view('pengikut', $datas);
+		$this->load->view('footer');
+	}
+
 }
 
 /* End of file Profil.php */
