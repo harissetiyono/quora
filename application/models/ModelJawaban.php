@@ -25,6 +25,8 @@ public function __construct()
 	{
 		$this->db->where('m_jawaban.status', 1);
 		$this->db->where('id_pertanyaan', $id_pertanyaan);
+		$this->db->join('member', 'member.id_member = m_jawaban.id_member');
+		// $this->db->order_by('title', 'desc');
 		// $this->db->join('m_dukungan', 'm_dukungan.id_jawaban = m_jawaban.id_jawaban');
 		return $this->db->get('m_jawaban')->result_array();
 	}

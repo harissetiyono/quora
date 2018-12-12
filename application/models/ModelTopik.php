@@ -13,6 +13,14 @@ class ModelTopik extends CI_Model {
 		return $this->db->get('topik');
 	}
 
+	public function get_topik_feed($id_member){
+		$this->db->distinct();
+		$this->db->join('m_feed', 'm_feed.id_topik = topik.id_topik', 'left');
+		$this->db->order_by("nama_topik", "asc");
+		$this->db->where('id_member', $id_member);
+		return $this->db->get('topik');
+	}
+
 	public function get_topik_by_id($id){
 		$this->db->where('id_topik', $id);
 		return $this->db->get('topik');

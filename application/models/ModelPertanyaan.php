@@ -17,6 +17,16 @@ public function __construct()
 		return $this->db->get('m_pertanyaan')->result_array();
 	}
 
+	public function get_pertanyaan_feed($id_member)
+	{	
+		$this->db->where('m_pertanyaan.status', 1);
+		$this->db->join('topik', 'topik.id_topik = m_pertanyaan.id_topik');
+		$this->db->join('m_feed', 'm_feed.id_topik = m_pertanyaan.id_topik');
+		$this->db->order_by('tanggal', 'desc');
+		$this->db->where('m_feed.id_member', $id_member);
+		return $this->db->get('m_pertanyaan')->result_array();
+	}
+
 	public function get_pertanyaan_by_id($id_pertanyaan)
 	{
 		$this->db->where('m_pertanyaan.status', 1);
@@ -36,6 +46,12 @@ public function __construct()
 	{
 		$this->db->join('topik', 'topik.id_topik = m_pertanyaan.id_topik');
 		$this->db->where('id_member', $id_member);
+		return $this->db->get('m_pertanyaan')->result_array();
+	}
+
+	public function get_pertanyaan_by_keyword($keyword)
+	{
+		$this->db->like('pertanyaan', $keyword, 'both');  
 		return $this->db->get('m_pertanyaan')->result_array();
 	}
 

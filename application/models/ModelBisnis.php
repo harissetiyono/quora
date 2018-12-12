@@ -220,6 +220,12 @@ class ModelBisnis extends CI_Model {
 		$this->db->set('click', $click);
 		$this->db->update('mb_ad_set');
 	}
+
+	public function getTotal()
+	{
+		$this->db->select('tanggal, jumlah');
+		return $this->db->get('ad_impression_log')->result_array();
+	}
 }
 
 /* End of file ModelBisnis.php */

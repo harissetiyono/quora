@@ -23,6 +23,7 @@ class Login extends CI_Controller {
 	public function check_login(){
 		$email = $this->input->post('email');
 		$password = $this->input->post('password');
+		$remember = $this->input->post('remember_me');
 
 		$member = $this->ModelLogin->get_member($email);
 		
@@ -32,7 +33,11 @@ class Login extends CI_Controller {
 				'id_member' => $member[0]['id_member'], 
 				'nama' => $member[0]['nama'], 
 				'email' => $member[0]['email'], 
-				);
+			);
+
+			if ($remember == 1) {
+				set_cookie($session);
+			}
 
 			$this->session->set_userdata($session);
 			redirect('beranda', $message);
@@ -56,7 +61,6 @@ class Login extends CI_Controller {
 		);
 
 		$insert = $this->ModelLogin->insert_member_new($data);
-
 
 		if ($insert) {
 			$message = $this->session->set_flashdata('message', 'Pendaftaran berhasil, silahkan login');

@@ -3,7 +3,7 @@
         <?php echo $this->session->userdata('message'); ?>
       </div>
     <?php endif ?>
-
+<?php $i=0; ?>
 <div class="row pt-2">
 	<div class="col">
 		<ul>
@@ -13,21 +13,51 @@
 	    		</li>
 	    	<?php endforeach ?>
 		</ul>
-		<a class="btn btn-primary" href="<?php echo site_url('beranda/add_feed') ?>">Tambah Feed Topik</a>
 	</div>
 	<div class="col-8">
+
 		<div class="card">
 		  <div class="card-body">
 		    <small><?php echo $this->session->userdata('nama') ?></small>
 		    <button type="button" class="btn btn-link" data-toggle="modal" data-target=".bd-example-modal-lg">Apakah pertanyaan anda?</button>
 		  </div>
 		</div>
+		<br><br>
+		<div class='row'>
+	 		<?php foreach ($member as $key): ?>
+	 			<?php echo "<div class='col-sm-4'>"; ?>
+				<div class="card" style="width: 20rem;">
+				  <div class="card-body">
+				  	<?php if ($key['foto'] == null): ?>
+				  		<img src="<?php echo base_url('assets/images/profil/default.png') ?>" style="border-radius: 50%; width:30px; height: 30px;">
+				  	<?php else: ?>
+				  		<img src="<?php echo base_url('assets/images/profil/'.$key['foto']) ?>" style="border-radius: 50%; width:30px; height: 30px;">
+				  	<?php endif ?>
+				  	
+				    <a href="<?php echo site_url('profil/id/'.$key['id_member']) ?>"><small> <?php echo $key['nama']; ?></small><br><br></a>
+				   <!--  <?php if ($key['id_followed'] == $this->session->userdata('id_member')): ?>
+				    	<button id="follow" class="btn btn-primary btn-sm" data-following="true">Unfollow</button>
+				    <?php else: ?>
+				    	<button id="follow" class="btn btn-primary btn-sm" data-following="false">Follow</button>
+				    <?php endif ?> -->
+				    
+				  </div>
+				</div>
+				<?php echo '</div>'; ?>
+
+				<?php 
+					$i++;
+				  	if ($i % 2 == 0) {echo '</div><div class="row">';} 
+			  	?>
+			<?php endforeach ?>
+		</div>
+		
 		<?php $i = 1; ?>
 		<?php foreach ($pertanyaan as $key_pertanyaan): ?>
 			<br>
 			<div class="card">
 			  <div class="card-body">
-			    <small>pertanyaan - <?php echo $key_pertanyaan['nama_topik']; ?></small>
+			    <small>pertanyaan</small>
 			    <a href="<?php echo site_url('pertanyaan/id/'.$key_pertanyaan['id_pertanyaan']) ?>" style="color: black">
 			    	<p class="h5"> <?php echo $key_pertanyaan['pertanyaan']; ?></p>
 			    </a>
@@ -72,35 +102,6 @@
 		<?php endforeach ?>
 	</div>
 	<div class="col">
-		
+		Kembangkan Lini Masa Anda
 	</div>
-</div>
-
-<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-    	<form action="<?php echo site_url('pertanyaan/tambah_pertanyaan') ?>" method="POST">
-	      <div class="modal-header">
-	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-	          <span aria-hidden="true">&times;</span>
-	        </button>
-	      </div>
-	      <div class="modal-body">
-	        <textarea name="pertanyaan" class="form-control" placeholder="awali pertanyaan anda dengan Apa, bagaimana, mengapa, dll" required></textarea>
-	        <label>Topik</label>
-	        <select name="id_topik" class="form-control">
-	        	<?php foreach ($topik as $key): ?>
-	        	<option value="<?php echo $key->id_topik ?>"><?php echo $key->nama_topik ?></option>	        		
-	        	<?php endforeach ?>
-	        </select>
-	        <label>Url (optional)</label>
-	        <input type="text" class="form-control" name="link">
-	      </div>
-	      <div class="modal-footer">
-	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-	        <input type="submit" class="btn btn-primary" value="Tambahkan pertanyaan"></input>
-      	</div>
-	    </form>
-    </div>
-  </div>
 </div>

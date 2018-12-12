@@ -9,6 +9,12 @@ class ModelDukungan extends CI_Model {
 		//Do your magic here
 	}
 
+	public function dukungan()
+	{
+		// $this->db->where('id_jawaban', $id_jawaban);
+		return $this->db->get('m_dukungan')->result_array();
+	}
+
 	public function check_dukung($id_member, $id_jawaban)
 	{
 		$this->db->where('id_member', $id_member);
@@ -16,10 +22,10 @@ class ModelDukungan extends CI_Model {
 		$query = $this->db->get('m_dukungan');
 
 		if (!empty($query->result_array())){
-        	return 1;
+        	return true;
 	    }
 	    else{
-	        return 0;
+	        return false;
 	    }
 	}
 
@@ -28,15 +34,18 @@ class ModelDukungan extends CI_Model {
 		$this->db->insert('m_dukungan', $datas);
 	}
 
+	public function delete_dukungan($id_member, $id_jawaban,$dukungan)
+	{
+		$this->db->where('id_member', $id_member);
+		$this->db->where('id_jawaban', $id_jawaban);
+		$this->db->where('dukungan', $dukungan);
+		$this->db->delete('m_dukungan');
+	}
+
 	public function update_dukung($id_jawaban, $datas)
 	{
 		$this->db->where('id_jawaban', $id_jawaban);
 		$this->db->update('m_dukungan', $datas);
-	}
-
-	public function delete_dukung()
-	{
-		
 	}	
 
 }

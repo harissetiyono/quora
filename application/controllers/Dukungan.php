@@ -26,10 +26,10 @@ class Dukungan extends CI_Controller {
 			'dukungan' => $dukungan, 
 		);
 
-		$check_dukung = $this->ModelDukungan->check_dukung($id_jawaban, $id_member);
+		$ql = $this->db->select('*')->from('m_dukungan')->where('id_member',$id_member)->where('id_jawaban', $id_jawaban)->get();
 
-		if ($check_dukung == 1) {
-			$update = $this->ModelDukungan->update_dukung($id_jawaban,$datas);
+		if ($ql->num_rows() > 0) {
+			$delete = $this->ModelDukungan->delete_dukungan($id_member,$id_jawaban, $dukungan);
 		}else{
 			$insert = $this->ModelDukungan->insert_dukung($datas);	
 		}
@@ -48,10 +48,11 @@ class Dukungan extends CI_Controller {
 			'dukungan' => $dukungan, 
 		);
 
-		$check_dukung = $this->ModelDukungan->check_dukung($id_jawaban, $id_member);
+		
+		$ql = $this->db->select('*')->from('m_dukungan')->where('id_member',$id_member)->where('id_jawaban', $id_jawaban)->get();
 
-		if ($check_dukung == 1) {
-			$update = $this->ModelDukungan->update_dukung($id_jawaban, $datas);
+		if ($ql->num_rows() > 0) {
+			$delete = $this->ModelDukungan->delete_dukungan($id_member,$id_jawaban, $dukungan);
 		}else{
 			$insert = $this->ModelDukungan->insert_dukung($datas);	
 		}

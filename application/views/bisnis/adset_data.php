@@ -20,17 +20,17 @@
     <small class="text-muted">Performance for All Campaigns<br></small> 
     <div class="list-group" id="list-tab" role="tablist">
       <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Impression</a>
-      <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Click</a>
+      <!-- <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Click</a>
       <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Generic Clickthrough Conversions</a>
-      <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Spend</a>
+      <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Spend</a> -->
     </div>   
   </div>
   <div class="col-10">
     <div class="tab-content" id="nav-tabContent">
       <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
-        <img src="<?php echo base_url('/assets/images/1.png') ?>">
+        <div id="impression" style="height: 250px;"></div>
       </div>
-      <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
+      <!-- <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
         <img src="<?php echo base_url('/assets/images/2.png') ?>">
       </div>
       <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">
@@ -38,7 +38,7 @@
       </div>
       <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">
         <img src="<?php echo base_url('/assets/images/4.png') ?>">
-      </div>
+      </div> -->
     </div>
   </div>
 </div>
@@ -88,4 +88,28 @@
 $(document).ready(function() {
   $('#campaign').DataTable();
 });
+
+
+$(function () {
+    "use strict";
+
+$.getJSON("<?php echo site_url('bisnis/getTotal'); ?>", function (json) {
+
+  new Morris.Line({
+    // ID of the element in which to draw the chart.
+    element: 'impression',
+    // Chart data records -- each entry in this array corresponds to a point on
+    // the chart.
+    data: json,
+    // The name of the data record attribute that contains x-values.
+    xkey: 'tanggal',
+    // A list of names of data record attributes that contain y-values.
+    ykeys: ['jumlah'],
+    // Labels for the ykeys -- will be displayed when you hover over the
+    // chart.
+    labels: ['Impression']
+  });
+ });
+});
+
 </script>

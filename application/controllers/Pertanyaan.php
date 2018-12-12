@@ -9,6 +9,7 @@ class Pertanyaan extends CI_Controller {
 		$this->load->model('ModelPertanyaan');
 		$this->load->model('ModelJawaban');
 		$this->load->model('ModelTopik');
+		$this->load->model('ModelDukungan');
 
 		$this->output->set_header('Last-Modified: ' . gmdate("D, d M Y H:i:s") . ' GMT');('Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0');
 		$this->output->set_header('Pragma: no-cache');
@@ -22,9 +23,15 @@ class Pertanyaan extends CI_Controller {
 
 	public function id($id_pertanyaan)
 	{
+		$id_member = $this->session->userdata('id_member');
 		$datas['pertanyaan'] = $this->ModelPertanyaan->get_pertanyaan_by_id($id_pertanyaan);
 		$datas['jawaban'] = $this->ModelJawaban->get_jawaban_by_id_pertanyaan($id_pertanyaan);
-		$datas['topik'] = $this->ModelTopik->get_topik()->result();
+		$datas['dukungan'] = $this->ModelDukungan->dukungan();
+		if (isset($id_member)) {
+			$datas['topik'] = $this->ModelTopik->get_topik_feed($id_member)->result();
+		}else{
+			$datas['topik'] = $this->ModelTopik->get_topik()->result();
+		}
 
 		$this->load->view('header');
 		$this->load->view('pertanyaan', $datas);

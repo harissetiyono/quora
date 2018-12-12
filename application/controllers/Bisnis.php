@@ -475,22 +475,28 @@ class Bisnis extends CI_Controller {
 	    $config['overwrite']           	= true;
 	    $config['file_name'] 			= $id_transaksi;
 
-    $this->load->library('upload', $config);
+	    $this->load->library('upload', $config);
 
-    if ( ! $this->upload->do_upload('bukti'))
-    {
-            $data = array('data' => $this->upload->display_errors());
+	    if ( ! $this->upload->do_upload('bukti'))
+	    {
+	            $data = array('data' => $this->upload->display_errors());
 
-            redirect('bisnis/billing', $data);
-    }
-    else
-    {
-            $data = array('data' => $this->upload->data());
+	            redirect('bisnis/billing', $data);
+	    }
+	    else
+	    {
+	            $data = array('data' => $this->upload->data());
 
-            $this->ModelBisnis->upload_bukti($id_transaksi,$data['data']['file_name']);
+	            $this->ModelBisnis->upload_bukti($id_transaksi,$data['data']['file_name']);
 
-            redirect('bisnis/billing', $data);
-    }
+	            redirect('bisnis/billing', $data);
+	    }
+	}
+
+	public function getTotal()
+	{
+		$data = $this->ModelBisnis->getTotal();
+		echo json_encode($data);
 	}
 
 	public function logout()

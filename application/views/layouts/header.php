@@ -7,7 +7,6 @@
 	<script src="<?= base_url('assets/js/popper.js')?>"></script>
 	<script src="<?= base_url('assets/js/bootstrap.min.js')?>"></script>
 	
-
 	<title>#</title>
 </head>
 <body>
